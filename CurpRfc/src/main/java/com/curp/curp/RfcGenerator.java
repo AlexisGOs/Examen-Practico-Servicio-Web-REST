@@ -15,7 +15,7 @@ public class RfcGenerator {
     }
 
     private static String calculateHomoclave(String curpPrimeraParte) {
-        // Peso de cada dígito
+        // Peso de cada dígito.
         int[] peso = {13, 12, 11, 10, 9, 8, 7, 6, 5, 4};
 
         int suma = 0;
