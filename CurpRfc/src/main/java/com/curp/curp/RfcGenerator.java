@@ -15,10 +15,34 @@ public class RfcGenerator {
     }
 
     private static String calculateHomoclave(String curpPrimeraParte) {
-        // Lógica para calcular la homoclave
-        // ...
+        // Peso de cada dígito
+        int[] peso = {13, 12, 11, 10, 9, 8, 7, 6, 5, 4};
 
-        // Ejemplo de homoclave generada por defecto (CK)
-        return "CK";
+        int suma = 0;
+
+        // Calcular la suma ponderada
+        for (int i = 0; i < peso.length; i++) {
+            char digito = curpPrimeraParte.charAt(i);
+            int valor = Character.getNumericValue(digito);
+
+            suma += valor * peso[i];
+        }
+
+        // Calcular el residuo
+        int residuo = suma % 10;
+
+        // Calcular el complemento a 10
+        int complemento = 10 - residuo;
+
+        // Convertir el complemento a 10 a un String
+        String homoclave;
+        if (complemento == 10) {
+            homoclave = "A";
+        } else {
+            homoclave = String.valueOf(complemento);
+        }
+
+        return homoclave;
     }
+
 }
